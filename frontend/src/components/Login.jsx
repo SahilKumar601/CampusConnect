@@ -4,12 +4,14 @@ import {FcGoogle} from 'react-icons/fc'
 import video from '../assets/share.mp4'
 import Logo from '../assets/logowhite.png'
 import { jwtDecode } from "jwt-decode";
+import {client} from '../client.js';
+
 
 
 const Login = () => {
+    const navigate=useNavigate();
     const createUser=(cred)=>{
         const {name,email,picture,sub}=jwtDecode(cred.credential);
-        console.log(name,email,picture,sub);
         localStorage.setItem('user',JSON.stringify(sub,name,picture));
         const doc={
             _id:sub,
@@ -17,9 +19,13 @@ const Login = () => {
             username:name,
             image:picture,
         }
+        client.createIfNotExists(doc)
+            .then(()=>{
+                navigate('/',{replace:true})
+            })
     }
     return ( 
-    <GoogleOAuthProvider clientId='895463030246-19itrtjqpp2js9fj1s1hg5gmmfv1ec49.apps.googleusercontent.com'>
+    <GoogleOAuthProvider clientId={`${import.meta.env.VITE_REACT_APP_Google_API_Key}`}>
     <div className="flex justify-start place-items-center flex-col h-screen">
         <div className="relative h-full w-full">
             <video 
