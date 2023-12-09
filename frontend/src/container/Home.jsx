@@ -8,12 +8,13 @@ import Pin from './Pin.jsx';
 import logo from '../assets/logo.png'
 import {client} from '../client.js'
 import { userquery } from "../Utils/data.js";
+import { fetchUser } from "../Utils/fetchUser.js";
 
 const Home = () => {
     const [Toggle ,setToggle]=useState(false);
     const [User, setUser] = useState(null);
     const scrollRef=useRef(null);
-    const userInfo = localStorage.getItem('user') !== 'undefined' ?  JSON.parse(localStorage.getItem('user')) : localStorage.clear();
+    const userInfo = fetchUser();
     useEffect(()=>{
         const query = userquery(userInfo);
         client.fetch(query)
