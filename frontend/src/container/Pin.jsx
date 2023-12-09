@@ -6,7 +6,7 @@ const Pin = ({User}) => {
     return ( 
         <div className="px-2 md:px-5">
             <div className="bg-gray-50">
-                <Navbar searchterm={searchterm}  setsearchterm={setsearchterm}/>
+                <Navbar User={User} searchterm={searchterm}  setsearchterm={setsearchterm}/>
             </div>
             <div className="h-full">
                 <Routes>
