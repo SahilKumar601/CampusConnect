@@ -1,4 +1,4 @@
-import {Circles} from 'react-loader-spinner';
+import {Circles,Triangle} from 'react-loader-spinner';
 const Spinner = ({message}) => {
     return (  
         <div className='flex flex-col justify-center items-center h-full w-full'>

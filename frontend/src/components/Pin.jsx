@@ -50,7 +50,7 @@ const Pin = ({pin:{postedBy,image,_id,destination,save}}) => {
                 <img className="rounded-lg w-full" alt='feed-images' src={urlFor(image).width(250).url()} />
                 {HoverStatus && (
                     <div 
-                        className='absolute  top-0 w-full h-full flex flex-col justify-between p-1 pr-2 pt-2 pb-2 z-50'
+                        className='absolute top-0 w-full h-full flex flex-col justify-between p-1 pr-2 pt-2 pb-2 z-50'
                         style={{height: '100%'}}
                     >
                         <div className='flex items-center justify-between '>
@@ -109,7 +109,7 @@ const Pin = ({pin:{postedBy,image,_id,destination,save}}) => {
                     </div>
                 )}
             </div>
-            <Link to={`user-profile/${userInfo}`}className='flex gap-2 mt-2 items-center'>
+            <Link to={`/user-profile/${postedBy._id}`}className='flex gap-2 mt-2 items-center'>
                 <img src={postedBy?.image} alt="user-profile" className='w-8 h-8 object-cover rounded-full' />       
                 <p className='font-bold captialize'>{postedBy.username}</p>
             </Link>
