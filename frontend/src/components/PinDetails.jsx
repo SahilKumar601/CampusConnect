@@ -10,7 +10,7 @@ import {pinDetailMorePinQuery,pinDetailQuery} from '../Utils/data'
 import Spinner from './Spinner';
 
 const PinDetails = ({User}) => {
-    const [pin, setPin] = useState()
+    const [pins, setPins] = useState()
     const [pinDetail, setPinDetail] = useState(null)
     const [comment, setComments] = useState()
     const [addingCommnet, setAddingComments] = useState(false)
@@ -25,7 +25,7 @@ const PinDetails = ({User}) => {
                     query = pinDetailMorePinQuery(data[0]);
                     client.fetch(query)
                     .then((res)=>{
-                        setPin(res);
+                        setPins(res);
                     })
                 }
             })
@@ -60,7 +60,9 @@ const PinDetails = ({User}) => {
         }
         
     }
-    return (  
+    console.log(pins);
+    return (
+        <>  
         <div className="flex xl-flex-row flex-col m-auto bg-white" style={{maxWidth:'1200px', borderRadius:'32px'}}>
             <div className="flex justify-center items-center md:items-start flex-inital ">
                 <img src={pinDetail?.image && urlFor(pinDetail.image).url()} alt="user-post"
@@ -128,11 +130,19 @@ const PinDetails = ({User}) => {
                     {addingCommnet ? <BsFillSendCheckFill/>:<IoIosSend/>}
                     </button>
                 </div>
-            </div>
-                    
+            </div>      
         </div>
-
-    );
-}
- 
+        {pins?.length > 0 && (
+        <h2 className="text-center font-bold text-2xl mt-8 mb-4">
+          More like this
+        </h2>
+      )}
+      {pins ? (
+        <MasonryLayout pins={pins} />
+      ) : (
+        <Spinner message="Loading more pins" />
+      )}
+    </>
+  );
+};
 export default PinDetails;
