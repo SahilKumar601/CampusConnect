@@ -44,7 +44,7 @@ const Pin = ({pin:{postedBy,image,_id,destination,save}}) => {
             <div
                 onMouseEnter={()=> setHoverStatus(true)}
                 onMouseLeave={()=> setHoverStatus(false)}
-                onClick={()=> navigate(`/post-detail/${_id}`)}
+                onClick={()=> navigate(`/pin-details/${_id}`)}
                 className='relative cursor-pointer w-auto hover:shadow-lg rounded-lg overflow-hidden transition-all  duration-500 ease-in-out'
             >
                 <img className="rounded-lg w-full" alt='feed-images' src={urlFor(image).width(250).url()} />
