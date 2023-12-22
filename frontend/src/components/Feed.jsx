@@ -27,7 +27,10 @@ const Feed = () => {
             
         }
     }, [categoryId])
-    if(loading) return <Spinner message="We Loading New Ideas into your Feed!"/>
+    if(loading) return <Spinner message={`We Loading New Ideas into your ${categoryId ? categoryId:''} Feed!`}/>
+    if(!pins?.length){
+        return <h1 className="font-bold text-center">No Pin is Posted in this Category. Be The First One To Post!!!</h1>
+    }
     return ( 
         <div>
             {pins && <MasonryLayout pins={pins}/>}

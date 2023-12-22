@@ -8,7 +8,7 @@ const Navbar = ({searchterm ,setsearchterm,User}) => {
                 <IoMdSearch fontSize={21} className='ml-1'/>
                 <input
                     type='text'
-                    onChange={(e)=>{e.target.value}}
+                    onChange={(e)=>{setsearchterm(e.target.value)}}
                     placeholder='Search'
                     value={searchterm}
                     onFocus={()=>navigate('/search')}
@@ -19,7 +19,7 @@ const Navbar = ({searchterm ,setsearchterm,User}) => {
                 <Link to={`/create-pin`} className='bg-black text-white rounded-lg mr-2 w-10 h-10 md:w-12 md:h-12 flex justify-center items-center'>
                     <IoMdAdd />
                 </Link>
-                <Link to={`/user-profile/${User?._id}`}>
+                <Link to={`user-profile/${User?._id}`}>
                 <img src={User?.image} alt="user" className='w-12 h-12 rounded-lg'/>
                 </Link>
             </div>
